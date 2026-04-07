@@ -1,0 +1,31 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@inertiajs/vue3": "^1.0",
+        "@laravel/echo-vue": "^2.3.3",
+        "@tailwindcss/forms": "^0.5",
+        "@vitejs/plugin-vue": "^5.0",
+        "autoprefixer": "^10.4",
+        "laravel-echo": "^2.3.3",
+        "laravel-vite-plugin": "^1.0",
+        "postcss": "^8.4",
+        "pusher-js": "^8.5.0",
+        "tailwindcss": "^3.4",
+        "vite": "^5.0",
+        "vue": "^3.4",
+        "ziggy-js": "^2.6.2"
+    },
+    "dependencies": {
+        "@popperjs/core": "^2.11.8",
+        "@silverwind/vue3-calendar-heatmap": "^2.0.6",
+        "apexcharts": "^5.10.5",
+        "pinia": "^2.1.7",
+        "tippy.js": "^6.3.7",
+        "vue3-apexcharts": "^1.11.1"
+    }
+}

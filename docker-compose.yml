@@ -1,0 +1,53 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: dashboard
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: telegram_dashboard
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+  laravel:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: telegram_dashboard
+      DB_USERNAME: dashboard
+      DB_PASSWORD: secret
+      REDIS_HOST: redis
+    command: sh -c "php artisan migrate --seed && php artisan serve --host=0.0.0.0 --port=8000"
+  reverb:
+    build: .
+    command: php artisan reverb:start --host=0.0.0.0 --port=8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - laravel
+      - redis
+  horizon:
+    build: .
+    command: php artisan horizon
+    depends_on:
+      - laravel
+      - redis
+  redis-subscriber:
+    build: .
+    command: php artisan redis:subscribe
+    depends_on:
+      - laravel
+      - redis
+volumes:
+  postgres_data:
