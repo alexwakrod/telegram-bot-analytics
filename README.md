@@ -209,7 +209,7 @@ MIT – free to use and modify.
 ---
 
 ## 🤝 Credits
-Coded & Developed by LelexTB
+Coded & Developed by [Alex Wakrod](https://github.com/alexwakrod)
 
 Built with Laravel, Vue 3, Inertia, and Reverb.  
 Uses [socialiteproviders/telegram](https://github.com/SocialiteProviders/Telegram) for OAuth.
